@@ -1,4 +1,4 @@
-package com.yi.oauth;
+package com.yi.auth;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;

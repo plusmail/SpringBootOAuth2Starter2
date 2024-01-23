@@ -1,7 +1,7 @@
-package com.yi.demo.service;
+package com.yi.service;
 
-import com.yi.demo.entity.User;
-import com.yi.demo.repository.UserRepository;
+import com.yi.entity.User;
+import com.yi.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

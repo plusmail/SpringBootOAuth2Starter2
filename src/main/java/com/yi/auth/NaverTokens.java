@@ -1,4 +1,4 @@
-package com.yi.oauth;
+package com.yi.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.yi.demo.config;
+package com.yi.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

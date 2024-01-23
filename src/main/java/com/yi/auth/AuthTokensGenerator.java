@@ -1,4 +1,4 @@
-package com.yi.oauth;
+package com.yi.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

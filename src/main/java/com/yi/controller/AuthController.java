@@ -1,9 +1,9 @@
-package com.yi.demo.controller;
+package com.yi.controller;
 
-import com.yi.oauth.AuthTokens;
-import com.yi.oauth.KakaoLoginParams;
-import com.yi.oauth.NaverLoginParams;
-import com.yi.demo.service.OAuthLoginService;
+import com.yi.auth.AuthTokens;
+import com.yi.auth.KakaoLoginParams;
+import com.yi.auth.NaverLoginParams;
+import com.yi.service.OAuthLoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

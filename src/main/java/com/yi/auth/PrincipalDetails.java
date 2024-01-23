@@ -10,7 +10,7 @@ package com.yi.auth;
 // 즉, 세션 안에 있는 security session 영역이 있는데 이 안에는 Authentication 타입의 객체만 저장된다
 // 이 Authentication 객체 안에 User정보가 저장되는데 User정보는 UserDetails 타입의 객체이다.
 
-import com.yi.demo.entity.User;
+import com.yi.entity.User;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;

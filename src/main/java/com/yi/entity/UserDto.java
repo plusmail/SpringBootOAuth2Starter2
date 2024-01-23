@@ -1,4 +1,4 @@
-package com.yi.demo.entity;
+package com.yi.entity;
 
 import lombok.Getter;
 import lombok.Setter;

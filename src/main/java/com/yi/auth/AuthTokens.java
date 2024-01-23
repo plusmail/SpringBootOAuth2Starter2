@@ -1,4 +1,4 @@
-package com.yi.oauth;
+package com.yi.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,6 @@
-package com.yi.oauth;
+package com.yi.auth;
 
-import com.yi.demo.entity.OAuthProvider;
+import com.yi.entity.OAuthProvider;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.util.LinkedMultiValueMap;

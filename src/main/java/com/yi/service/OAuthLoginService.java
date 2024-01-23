@@ -1,12 +1,12 @@
-package com.yi.demo.service;
+package com.yi.service;
 
-import com.yi.oauth.AuthTokens;
-import com.yi.oauth.OAuthInfoResponse;
-import com.yi.oauth.OAuthLoginParams;
-import com.yi.oauth.RequestOAuthInfoService;
-import com.yi.demo.entity.User;
-import com.yi.demo.repository.UserRepository;
-import com.yi.oauth.AuthTokensGenerator;
+import com.yi.auth.AuthTokens;
+import com.yi.auth.OAuthInfoResponse;
+import com.yi.auth.OAuthLoginParams;
+import com.yi.auth.RequestOAuthInfoService;
+import com.yi.entity.User;
+import com.yi.repository.UserRepository;
+import com.yi.auth.AuthTokensGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

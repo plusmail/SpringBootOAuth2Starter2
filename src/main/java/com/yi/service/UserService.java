@@ -1,6 +1,6 @@
-package com.yi.demo.service;
+package com.yi.service;
 
-import com.yi.demo.entity.User;
+import com.yi.entity.User;
 
 import java.util.List;
 

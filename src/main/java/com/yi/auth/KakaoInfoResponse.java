@@ -1,36 +1,42 @@
-package com.yi.oauth;
+package com.yi.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.yi.demo.entity.OAuthProvider;
+import com.yi.entity.OAuthProvider;
 import lombok.Getter;
 
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NaverInfoResponse implements OAuthInfoResponse {
+public class KakaoInfoResponse implements OAuthInfoResponse {
 
-    @JsonProperty("response")
-    private Response response;
+    @JsonProperty("kakao_account")
+    private KakaoAccount kakaoAccount;
 
     @Getter
     @JsonIgnoreProperties(ignoreUnknown = true)
-    static class Response {
+    static class KakaoAccount {
+        private KakaoProfile profile;
         private String email;
+    }
+
+    @Getter
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    static class KakaoProfile {
         private String username;
     }
 
     @Override
     public String getEmail() {
-        return response.email;
+        return kakaoAccount.email;
     }
 
     @Override
     public String getUsername() {
-        return response.username;
+        return kakaoAccount.profile.username;
     }
 
     @Override
     public OAuthProvider getOAuthProvider() {
-        return OAuthProvider.NAVER;
+        return OAuthProvider.KAKAO;
     }
 }

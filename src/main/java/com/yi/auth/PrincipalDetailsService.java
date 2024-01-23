@@ -1,8 +1,8 @@
 package com.yi.auth;
 
 
-import com.yi.demo.entity.User;
-import com.yi.demo.repository.UserRepository;
+import com.yi.entity.User;
+import com.yi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;

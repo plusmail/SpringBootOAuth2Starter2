@@ -1,7 +1,7 @@
-package com.yi.demo.controller;
+package com.yi.controller;
 
-import com.yi.demo.entity.User;
-import com.yi.demo.service.UserService;
+import com.yi.entity.User;
+import com.yi.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

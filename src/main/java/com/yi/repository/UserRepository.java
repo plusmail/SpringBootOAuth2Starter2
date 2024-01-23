@@ -1,6 +1,6 @@
-package com.yi.demo.repository;
+package com.yi.repository;
 
-import com.yi.demo.entity.User;
+import com.yi.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

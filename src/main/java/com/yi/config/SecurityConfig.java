@@ -1,6 +1,6 @@
-package com.yi.demo.config;
+package com.yi.config;
 
-import com.yi.oauth.PrincipalOauth2UserService;
+import com.yi.auth.PrincipalOauth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

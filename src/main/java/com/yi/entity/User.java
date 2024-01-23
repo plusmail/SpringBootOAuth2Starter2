@@ -1,4 +1,4 @@
-package com.yi.demo.entity;
+package com.yi.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

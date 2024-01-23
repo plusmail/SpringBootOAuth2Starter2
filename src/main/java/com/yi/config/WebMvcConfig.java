@@ -1,4 +1,4 @@
-package com.yi.demo.config;
+package com.yi.config;
 
 import org.springframework.boot.web.servlet.view.MustacheViewResolver;
 import org.springframework.context.annotation.Configuration;
