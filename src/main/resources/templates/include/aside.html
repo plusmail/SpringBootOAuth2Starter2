@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!-- container start -->
+<th:block th:fragment="asideFragment">
+
+    <div class="container-fluid">
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">메인메뉴</button>
+        <div id="demo" class="collapse">
+            <div class="btn-group-vertical">
+                <button type="button" class="btn btn-primary">Apple</button>
+                <button type="button" class="btn btn-primary">Samsung</button>
+                <button type="button" class="btn btn-primary">Sony</button>
+            </div>
+        </div>
+    </div>
+
+</th:block>

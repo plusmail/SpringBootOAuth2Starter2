@@ -30,39 +30,39 @@ public class RootConfig {
     @Value("${spring.datasource.password}")
     private  String password;
 
-
-    @Bean
-    public BasicDataSource dataSource() {
-
-        BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setDriverClassName(dirverClassName);
-        basicDataSource.setUrl(url);
-        basicDataSource.setUsername(username);
-        basicDataSource.setPassword(password);
-        return basicDataSource;
-    }
-
-
-    @Bean
-    public SqlSessionTemplate sqlSessionTemplate() throws Exception {
-        return new SqlSessionTemplate((SqlSessionFactory) sqlSessionFactoryBean());
-
-    }
-
-    @Bean
-    public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
-        SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
-        sqlSessionFactory.setConfigLocation(applicationContext.getResource("classpath:/mybatis-config.xml"));
-        sqlSessionFactory.setDataSource(dataSource());
-        return (SqlSessionFactory)sqlSessionFactory.getObject();
-    }
-
-    @Bean
-    public DataSourceTransactionManager transactionManager() {
-        DataSourceTransactionManager transaction = new DataSourceTransactionManager();
-        transaction.setDataSource(dataSource());
-        return transaction;
-    }
+//
+//    @Bean
+//    public BasicDataSource dataSource() {
+//
+//        BasicDataSource basicDataSource = new BasicDataSource();
+//        basicDataSource.setDriverClassName(dirverClassName);
+//        basicDataSource.setUrl(url);
+//        basicDataSource.setUsername(username);
+//        basicDataSource.setPassword(password);
+//        return basicDataSource;
+//    }
+//
+//
+//    @Bean
+//    public SqlSessionTemplate sqlSessionTemplate() throws Exception {
+//        return new SqlSessionTemplate((SqlSessionFactory) sqlSessionFactoryBean());
+//
+//    }
+//
+//    @Bean
+//    public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
+//        SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
+//        sqlSessionFactory.setConfigLocation(applicationContext.getResource("classpath:/mybatis-config.xml"));
+//        sqlSessionFactory.setDataSource(dataSource());
+//        return (SqlSessionFactory)sqlSessionFactory.getObject();
+//    }
+//
+//    @Bean
+//    public DataSourceTransactionManager transactionManager() {
+//        DataSourceTransactionManager transaction = new DataSourceTransactionManager();
+//        transaction.setDataSource(dataSource());
+//        return transaction;
+//    }
 
 
 }

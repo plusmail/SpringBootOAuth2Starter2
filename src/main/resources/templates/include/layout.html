@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="~{/include/config::configFragment}">
+<title>스프링 부트 </title>
+</head>
+<body>
+<div class="body-container">
+    <div th:replace="~{/include/header::headerFragment}"></div>
+    <aside th:replace="~{/include/aside::asideFragment}"></aside>
+    <div class="main-container">
+        <div class="content-container">
+            <th:block layout:fragment="content"></th:block>
+        </div>
+    </div>
+
+</div>
+<footer th:replace="~{/include/footer::footerFragment}"></footer>
+</body>
+
+</html>

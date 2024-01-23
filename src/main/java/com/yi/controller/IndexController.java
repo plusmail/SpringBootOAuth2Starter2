@@ -24,9 +24,9 @@ public class IndexController {
     private final UserRepository repository;
     private final PasswordEncoder passwordEncoder;
 
-    @GetMapping({"", "/"})
-    public String index(){
-        return "index";
+    @GetMapping("/")
+    public String main(){
+        return "/home/home";
     }
 
     @GetMapping("/user")
@@ -66,6 +66,7 @@ public class IndexController {
         user.setRole("USER");
         String encoded = passwordEncoder.encode(user.getPassword());
         user.setPassword(encoded);
+        System.out.println("회원가입->"+ user);
         repository.save(user);
         return "redirect:/login";
     }

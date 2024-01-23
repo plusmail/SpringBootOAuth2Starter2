@@ -15,6 +15,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
+import java.util.Properties;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "com.yi.repository") // Replace with your repository package
@@ -33,11 +34,32 @@ public class JpaConfig {
 
     @Value("${spring.datasource.password}")
     private  String password;
+////////////////
+    @Value("${spring.jpa.database}")
+    private  String database;
+
+    @Value("${spring.jpa.database-platform}")
+    private  String databasePlatForm;
+
+    @Value("${spring.jpa.hibernate.ddl-auto}")
+    private  String ddlAuto;
+
+    @Value("${spring.jpa.generate-ddl}")
+    private  String ddl;
+
+    @Value("${spring.jpa.show-sql}")
+    private  String showSql;
+
+    @Value("${spring.jpa.properties.hibernate.format_sql}")
+    private  String formatSql;
+
+    @Value("${spring.jpa.properties.hibernate.enable_lazy_load_no_trans}")
+    private  String lazyTrans;
     @Bean
-    public DataSource dataSourceHikari() {
+    public HikariDataSource dataSource() {
         HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setDriverClassName(dirverClassName);
-        dataSource.setJdbcUrl(url); // Replace with your database URL
+        dataSource.setDriverClassName(dirverClassName); // MySQL 드라이버 지정
+        dataSource.setJdbcUrl(url);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         return dataSource;
@@ -46,27 +68,28 @@ public class JpaConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSourceHikari());
-        em.setPackagesToScan("com.yi.entity"); // Replace with your entity package
-
-        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        em.setJpaVendorAdapter(vendorAdapter);
-
-        HashMap<String, Object> properties = new HashMap<>();
-        properties.put("hibernate.hbm2ddl.auto", "update"); // Equivalent to spring.jpa.hibernate.ddl-auto=update
-        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
-        properties.put("hibernate.show_sql", true);
-        properties.put("hibernate.format_sql", true);
-        properties.put("hibernate.enable_lazy_load_no_trans", true);
-        em.setJpaPropertyMap(properties);
-
+        em.setDataSource(dataSource());
+        em.setPackagesToScan("com.yi.entity"); // Entity 위치 지정
+        em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        em.setJpaProperties(jpaProperties());
         return em;
     }
 
-//    @Bean
-//    public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
-//        JpaTransactionManager transactionManager = new JpaTransactionManager();
-//        transactionManager.setEntityManagerFactory(emf);
-//        return transactionManager;
-//    }
+    @Bean
+    public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(emf);
+        return transactionManager;
+    }
+
+    private Properties jpaProperties() {
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.dialect", databasePlatForm);
+        properties.setProperty("hibernate.ddl-auto", ddlAuto);
+        properties.setProperty("hibernate.generate_ddl", ddl);
+        properties.setProperty("hibernate.show_sql", showSql);
+        properties.setProperty("hibernate.format_sql", formatSql);
+        properties.setProperty("hibernate.enable_lazy_load_no_trans", lazyTrans);
+        return properties;
+    }
 }

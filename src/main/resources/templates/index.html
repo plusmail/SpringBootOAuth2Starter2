@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>index</title>
+  <title>Main 페이지</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>인덱스 페이지</h1>
-
+<p th:text="'여기는 ' + ${data}" >페이지 소개</p>
 </body>
 </html>

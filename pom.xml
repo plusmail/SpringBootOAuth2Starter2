@@ -162,12 +162,23 @@
         </dependency>
         <!--////MyBatis End-->
 
-        <!--타임리프-->
+        <!-- html thymeleaf 사용 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-        <!--타임리프-->
+        <!-- html thymeleaf layout 사용 -->
+        <dependency>
+            <groupId>nz.net.ultraq.thymeleaf</groupId>
+            <artifactId>thymeleaf-layout-dialect</artifactId>
+        </dependency>
+        <!-- html thymeleaf sec 사용 -->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+            <version>3.1.2.RELEASE</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.apache.commons</groupId>
