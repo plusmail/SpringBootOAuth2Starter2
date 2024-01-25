@@ -103,7 +103,7 @@ public class JpaConfiguration {
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
 
         JpaTransactionManager txManager = new JpaTransactionManager();
-        txManager.setEntityManagerFactory(entityManagerFactory);
+        txManager.setEntityManagerFactory(entityManagerFactory().getObject());
         return txManager;
     }
 
