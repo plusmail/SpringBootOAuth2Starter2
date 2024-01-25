@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @AllArgsConstructor
+@Transactional
 @RequestMapping("/api/users")
 public class UserAPIController {
 
@@ -43,11 +45,10 @@ public class UserAPIController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    // Build Update User REST API
-    @PutMapping("{id}")
     // http://localhost:8080/api/users/1
+    @PutMapping("{id}")
     public ResponseEntity<User> updateUser(@PathVariable("id") Long userId,
-                                           @RequestBody User user){
+                                           @RequestBody User user) throws Exception {
         user.setId(userId);
         User updatedUser = userService.updateUser(user);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);

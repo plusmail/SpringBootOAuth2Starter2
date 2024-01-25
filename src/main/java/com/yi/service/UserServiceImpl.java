@@ -1,14 +1,17 @@
 package com.yi.service;
 
 import com.yi.entity.User;
+import com.yi.exception.InsufficientBalanceException;
 import com.yi.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
@@ -31,11 +34,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUser(User user) {
+    @Transactional(rollbackOn = {InsufficientBalanceException.class, Exception.class})
+    public User updateUser(User user) throws InsufficientBalanceException {
         User existingUser = userRepository.findById(Math.toIntExact(user.getId())).get();
         existingUser.setUsername(user.getUsername());
         existingUser.setEmail(user.getEmail());
         User updatedUser = userRepository.save(existingUser);
+        if(updatedUser.getId() == 1){
+            throw new InsufficientBalanceException("잔액이 부족합니다.");
+//            throw new RuntimeException("RuntimeException (Unchecked Exception)");
+        }
         return updatedUser;
     }
 

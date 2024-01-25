@@ -4,6 +4,7 @@
     <persistence-unit name="simple-jpa-application">
         <class>com.yi.User</class>
         <class>com.yi.entity.Test</class>
+        <class>com.yi.entity.ChatEntity</class>
         <properties>
             <!-- 속성 설정 -->
         </properties>
