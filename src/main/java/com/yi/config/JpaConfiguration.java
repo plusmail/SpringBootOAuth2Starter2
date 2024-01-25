@@ -3,10 +3,12 @@ package com.yi.config;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import jakarta.persistence.EntityManagerFactory;
+import org.hibernate.engine.transaction.jta.platform.internal.AtomikosJtaPlatform;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -99,7 +101,8 @@ public class JpaConfiguration {
         return factory;
     }
 
-    @Bean
+    @Primary
+    @Bean(name = "transactionManager")
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
 
         JpaTransactionManager txManager = new JpaTransactionManager();
@@ -114,6 +117,8 @@ public class JpaConfiguration {
         properties.setProperty("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
         properties.setProperty("hibernate.show_sql", showSql);
         properties.setProperty("hibernate.format_sql", formatSql);
+//        properties.setProperty("jakarta.persistence.transactionType", "JTA");
+        properties.setProperty("hibernate.transaction.jta.platform", "JBossTS");
         return properties;
     }
 
