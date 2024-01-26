@@ -1,6 +1,7 @@
 package com.yi.config;
 
 import com.yi.auth.PrincipalOauth2UserService;
+import de.codecentric.boot.admin.server.config.AdminServerProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final PrincipalOauth2UserService oauth2UserService;
+    private final AdminServerProperties adminServer;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -27,6 +29,7 @@ public class SecurityConfig {
                                 // 단, DB에는 ROLE_을 붙여서 적어줘야 제대로 맵핑이 된다.
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .anyRequest().permitAll()
+
                 )
                 .formLogin(configurer ->
                                 configurer.loginPage("/login")
