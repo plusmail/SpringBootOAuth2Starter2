@@ -1,6 +1,6 @@
 package com.yi.auth;
 
-import com.yi.entity.OAuthProvider;
+import com.yi.entity.OauthProvider;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.util.LinkedMultiValueMap;
@@ -13,8 +13,8 @@ public class NaverLoginParams implements OAuthLoginParams {
     private String state;
 
     @Override
-    public OAuthProvider oAuthProvider() {
-        return OAuthProvider.NAVER;
+    public OauthProvider oAuthProvider() {
+        return OauthProvider.NAVER;
     }
 
     @Override

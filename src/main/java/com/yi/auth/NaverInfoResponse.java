@@ -2,7 +2,7 @@ package com.yi.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.yi.entity.OAuthProvider;
+import com.yi.entity.OauthProvider;
 import lombok.Getter;
 
 @Getter
@@ -30,7 +30,7 @@ public class NaverInfoResponse implements OAuthInfoResponse {
     }
 
     @Override
-    public OAuthProvider getOAuthProvider() {
-        return OAuthProvider.NAVER;
+    public OauthProvider getOAuthProvider() {
+        return OauthProvider.NAVER;
     }
 }

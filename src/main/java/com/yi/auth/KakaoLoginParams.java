@@ -1,6 +1,6 @@
 package com.yi.auth;
 
-import com.yi.entity.OAuthProvider;
+import com.yi.entity.OauthProvider;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.util.LinkedMultiValueMap;
@@ -12,8 +12,8 @@ public class KakaoLoginParams implements OAuthLoginParams {
     private String authorizationCode;
 
     @Override
-    public OAuthProvider oAuthProvider() {
-        return OAuthProvider.KAKAO;
+    public OauthProvider oAuthProvider() {
+        return OauthProvider.KAKAO;
     }
 
     @Override

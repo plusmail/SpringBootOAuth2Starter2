@@ -1,7 +1,7 @@
 package com.yi.controller;
 
 import com.yi.entity.User;
-import com.yi.service.UserService;
+import com.yi.service.UserServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -18,7 +19,7 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserAPIController {
 
-    private UserService userService;
+    private UserServiceImpl userService;
 
     // build create User REST API
     @PostMapping
@@ -33,8 +34,8 @@ public class UserAPIController {
     // http://localhost:8080/api/users/1
     @GetMapping("{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") Long userId){
-        User user = userService.getUserById(userId);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        Optional<User> user = userService.getUserById(userId);
+        return new ResponseEntity<>(user.get(), HttpStatus.OK);
     }
 
     // Build Get All Users REST API

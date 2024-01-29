@@ -3,7 +3,6 @@ package com.yi.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -28,16 +27,25 @@ public class User {
 
     private String provider; // 소셜로그인 시 어느 sns를 사용했는지
     private String providerId; // 소셜로그인 시 해당 sns의 id
-    private OAuthProvider oAuthProvider;
+
+
     @CreatedDate
     private Instant createdAt;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "o_auth_provider")
+    private OauthProvider oauthProvider;
 
     @Builder
-    public User(String username, String email, OAuthProvider oAuthProvider) {
+    public User(String username, String email, OauthProvider oauthProvider) {
         this.username = username;
         this.email = email;
-        this.oAuthProvider = oAuthProvider;
+        this.oauthProvider = oauthProvider;
+    }
+    @Builder
+    public User(String email, OauthProvider oauthProvider) {
+        this.email = email;
+        this.oauthProvider = oauthProvider;
     }
 
 }

@@ -1,6 +1,6 @@
 package com.yi.auth;
 
-import com.yi.entity.OAuthProvider;
+import com.yi.entity.OauthProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -32,8 +32,8 @@ public class NaverApiClient implements OAuthApiClient {
     private final RestTemplate restTemplate;
 
     @Override
-    public OAuthProvider oAuthProvider() {
-        return OAuthProvider.NAVER;
+    public OauthProvider oAuthProvider() {
+        return OauthProvider.NAVER;
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.yi.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import lombok.Value;
 
 import java.io.Serializable;
@@ -11,12 +10,11 @@ import java.time.Instant;
 /**
  * DTO for {@link User}
  */
+@Value
 @Getter
 @Setter
-@ToString
-@Value
 public class UserDto implements Serializable {
-    int id;
+    Long id;
     String username;
     String password;
     String email;
@@ -24,4 +22,5 @@ public class UserDto implements Serializable {
     String provider;
     String providerId;
     Instant createdAt;
+    OauthProvider oAuthProvider;
 }

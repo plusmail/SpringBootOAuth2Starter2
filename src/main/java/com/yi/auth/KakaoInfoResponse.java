@@ -2,7 +2,7 @@ package com.yi.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.yi.entity.OAuthProvider;
+import com.yi.entity.OauthProvider;
 import lombok.Getter;
 
 @Getter
@@ -36,7 +36,7 @@ public class KakaoInfoResponse implements OAuthInfoResponse {
     }
 
     @Override
-    public OAuthProvider getOAuthProvider() {
-        return OAuthProvider.KAKAO;
+    public OauthProvider getOAuthProvider() {
+        return OauthProvider.KAKAO;
     }
 }

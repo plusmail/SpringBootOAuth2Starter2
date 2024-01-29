@@ -5,7 +5,7 @@
     <nav class="navbar navbar-expand-xl bg-dark navbar-light">
         <!-- Brand -->
         <a th:href="@{/user/}" class="navbar-brand">
-            <img th:src="@{/images/logo.png}" alt="logo" id="logo"/>
+            <img src="/images/logo.png" alt="logo" id="logo"/>
         </a>
         <!-- Links -->
         <ul class="navbar-nav">
@@ -32,7 +32,27 @@
             <input class="form-control mr-sm-2" type="text" placeholder="Search">
             <button class="btn btn-success" type="submit">Search</button>
         </form>
+
+<!--        <div><i th:text="${session.user.email}"></i></div>-->
+<!--        <div><i th:text="${session.user.oauthType}"></i></div>-->
+        <br>
+        <input type="button" id="logOutBtn" value="로그아웃">
     </nav>
+
+    <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
+    <script th:inline="javascript">
+        $("#logOutBtn").on('click', function() {
+            $.ajax({
+                type : "POST",
+                url : "/logout",
+                success : function() {
+                    alert("로그아웃 되었습니다.")
+                    location.replace("/login")
+                }
+            })
+        })
+    </script>
+
 </th:block>
 
 </html>

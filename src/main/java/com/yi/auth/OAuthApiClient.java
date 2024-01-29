@@ -1,9 +1,9 @@
 package com.yi.auth;
 
-import com.yi.entity.OAuthProvider;
+import com.yi.entity.OauthProvider;
 
 public interface OAuthApiClient {
-    OAuthProvider oAuthProvider();
+    OauthProvider oAuthProvider();
     String requestAccessToken(OAuthLoginParams params);
     OAuthInfoResponse requestOauthInfo(String accessToken);
 }

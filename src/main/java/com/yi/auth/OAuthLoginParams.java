@@ -1,9 +1,9 @@
 package com.yi.auth;
 
-import com.yi.entity.OAuthProvider;
+import com.yi.entity.OauthProvider;
 import org.springframework.util.MultiValueMap;
 
 public interface OAuthLoginParams {
-    OAuthProvider oAuthProvider();
+    OauthProvider oAuthProvider();
     MultiValueMap<String, String> makeBody();
 }

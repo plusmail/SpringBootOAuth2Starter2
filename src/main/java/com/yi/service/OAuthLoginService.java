@@ -33,7 +33,7 @@ public class OAuthLoginService {
         User user = User.builder()
                 .email(oAuthInfoResponse.getEmail())
                 .username(oAuthInfoResponse.getUsername())
-                .oAuthProvider(oAuthInfoResponse.getOAuthProvider())
+                .oauthProvider(oAuthInfoResponse.getOAuthProvider())
                 .build();
 
         return (Long) userRepository.save(user).getId();

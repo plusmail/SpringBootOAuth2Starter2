@@ -5,6 +5,8 @@ import com.yi.auth.PrincipalDetails;
 import com.yi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -16,6 +18,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jakarta.servlet.http.HttpServletRequest;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+
 @Controller
 @Slf4j
 @RequiredArgsConstructor
@@ -23,10 +30,26 @@ public class IndexController {
 
     private final UserRepository repository;
     private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @GetMapping("/")
     public String main(){
-        return "/home/home";
+        return "home/home";
+    }
+
+
+    @GetMapping("/address")
+    @ResponseBody
+    public String address(HttpServletRequest req) throws URISyntaxException {
+
+        URI uri = new URI(req.getRequestURL().toString());
+        String hostname = uri.getScheme()+"://"+uri.getHost() +":"+ uri.getPort();
+        System.out.println(req.getRequestURI());
+        System.out.println(req.getRequestURL());
+        System.out.println("1111->"+hostname);
+
+        return hostname;
     }
 
     @GetMapping("/user")
