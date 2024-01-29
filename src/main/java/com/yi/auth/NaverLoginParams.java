@@ -8,7 +8,7 @@ import org.springframework.util.MultiValueMap;
 
 @Getter
 @NoArgsConstructor
-public class NaverLoginParams implements OAuthLoginParams {
+public class NaverLoginParams implements OauthLoginParams {
     private String authorizationCode;
     private String state;
 

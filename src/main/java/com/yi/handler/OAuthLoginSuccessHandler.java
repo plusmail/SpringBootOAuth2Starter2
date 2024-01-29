@@ -36,7 +36,8 @@ public class OAuthLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHand
         OAuth2AuthenticationToken token = (OAuth2AuthenticationToken) authentication;
 
         String email = null;
-        OauthProvider oauthType = OauthProvider.valueOf(token.getAuthorizedClientRegistrationId());
+        System.out.println("onAuthenticationSuccess->"+token.getAuthorizedClientRegistrationId());
+        OauthProvider oauthType = OauthProvider.valueOf(token.getAuthorizedClientRegistrationId().toUpperCase());
 
 
         if("kakao".equalsIgnoreCase(String.valueOf(oauthType))) {
@@ -52,6 +53,8 @@ public class OAuthLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHand
         log.info("LOGIN SUCCESS : {} FROM {}", email, oauthType);
 
         Optional<User> user = userService.getUserByEmailAndOAuthType(email, oauthType);
+
+        System.out.println("2222222222->" + user);
 
         // 세션에 user 저장
         log.info("USER SAVED IN SESSION");

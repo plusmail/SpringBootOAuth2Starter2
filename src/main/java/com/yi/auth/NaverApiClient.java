@@ -37,7 +37,7 @@ public class NaverApiClient implements OAuthApiClient {
     }
 
     @Override
-    public String requestAccessToken(OAuthLoginParams params) {
+    public String requestAccessToken(OauthLoginParams params) {
         String url = authUrl + "/oauth2.0/token";
 
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -57,7 +57,7 @@ public class NaverApiClient implements OAuthApiClient {
     }
 
     @Override
-    public OAuthInfoResponse requestOauthInfo(String accessToken) {
+    public OauthInfoResponse requestOauthInfo(String accessToken) {
         String url = apiUrl + "/v1/nid/me";
 
         HttpHeaders httpHeaders = new HttpHeaders();

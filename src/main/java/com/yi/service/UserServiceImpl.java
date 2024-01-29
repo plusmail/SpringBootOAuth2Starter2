@@ -61,6 +61,7 @@ public class UserServiceImpl extends DefaultOAuth2UserService {
 
     ////////////////////
     public User createUser(User user) {
+        System.out.println("createuser->" + user);
         return userRepository.save(user);
     }
 
@@ -68,6 +69,8 @@ public class UserServiceImpl extends DefaultOAuth2UserService {
         return userRepository.findById(Math.toIntExact(userId));
     }
     public Optional<User> getUserByEmailAndOAuthType(String email, OauthProvider oauthProvider) {
+        System.out.println("getUserByEmailAndOAuthType->" + email +"====" + oauthProvider);
+
         return userRepository.findByEmailAndOauthProvider(email, oauthProvider);
     }
 

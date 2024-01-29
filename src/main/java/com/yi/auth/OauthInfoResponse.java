@@ -2,8 +2,8 @@ package com.yi.auth;
 
 import com.yi.entity.OauthProvider;
 
-public interface OAuthInfoResponse {
+public interface OauthInfoResponse {
     String getEmail();
     String getUsername();
-    OauthProvider getOAuthProvider();
+    OauthProvider getOauthProvider();
 }

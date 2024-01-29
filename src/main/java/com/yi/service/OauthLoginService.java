@@ -1,39 +1,36 @@
 package com.yi.service;
 
-import com.yi.auth.AuthTokens;
-import com.yi.auth.OAuthInfoResponse;
-import com.yi.auth.OAuthLoginParams;
-import com.yi.auth.RequestOAuthInfoService;
+import com.yi.auth.*;
+import com.yi.auth.OauthLoginParams;
 import com.yi.entity.User;
 import com.yi.repository.UserRepository;
-import com.yi.auth.AuthTokensGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class OAuthLoginService {
+public class OauthLoginService {
     private final UserRepository userRepository;
     private final AuthTokensGenerator authTokensGenerator;
     private final RequestOAuthInfoService requestOAuthInfoService;
 
-    public AuthTokens login(OAuthLoginParams params) {
-        OAuthInfoResponse oAuthInfoResponse = requestOAuthInfoService.request(params);
+    public AuthTokens login(OauthLoginParams params) {
+        OauthInfoResponse oAuthInfoResponse = requestOAuthInfoService.request(params);
         Long memberId = findOrCreateMember(oAuthInfoResponse);
         return authTokensGenerator.generate(memberId);
     }
 
-    private Long findOrCreateMember(OAuthInfoResponse oAuthInfoResponse) {
-        return userRepository.findByEmail(oAuthInfoResponse.getEmail())
+    private Long findOrCreateMember(OauthInfoResponse oauthInfoResponse) {
+        return userRepository.findByEmail(oauthInfoResponse.getEmail())
                 .map(User::getId)
-                .orElseGet(() -> newUser(oAuthInfoResponse));
+                .orElseGet(() -> newUser(oauthInfoResponse));
     }
 
-    private Long newUser(OAuthInfoResponse oAuthInfoResponse) {
+    private Long newUser(OauthInfoResponse oAuthInfoResponse) {
         User user = User.builder()
                 .email(oAuthInfoResponse.getEmail())
                 .username(oAuthInfoResponse.getUsername())
-                .oauthProvider(oAuthInfoResponse.getOAuthProvider())
+                .oauthProvider(oAuthInfoResponse.getOauthProvider())
                 .build();
 
         return (Long) userRepository.save(user).getId();

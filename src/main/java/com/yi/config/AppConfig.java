@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@ComponentScan(basePackages = {"com.yi.*", "com.yi.repository", "com.yi.service"})
+@ComponentScan(basePackages = {"com.yi.*","com.yi.auth.*","com.yi.repository", "com.yi.service"})
 public class AppConfig {
     @Bean
     public ObjectMapper objectMapper(){

@@ -37,7 +37,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
                     .setRole("ROLE_USER")
                     .setProvider(userRequest.getClientRegistration().getClientId())
                     .setProviderId(oAuth2User.getAttribute("sub"))
-//                    .setOAuthProvider(oAuth2User.getAttribute("sub"))
+//                    .setOauthProvider(oAuth2User.getAttribute("sub"))
                     .setEmail(oAuth2User.getAttribute("email"));
 
             User persist = repository.save(user);

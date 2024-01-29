@@ -7,7 +7,7 @@ import lombok.Getter;
 
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NaverInfoResponse implements OAuthInfoResponse {
+public class NaverInfoResponse implements OauthInfoResponse {
 
     @JsonProperty("response")
     private Response response;
@@ -30,7 +30,7 @@ public class NaverInfoResponse implements OAuthInfoResponse {
     }
 
     @Override
-    public OauthProvider getOAuthProvider() {
+    public OauthProvider getOauthProvider() {
         return OauthProvider.NAVER;
     }
 }

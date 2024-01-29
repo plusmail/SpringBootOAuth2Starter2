@@ -3,7 +3,7 @@ package com.yi.controller;
 import com.yi.auth.AuthTokens;
 import com.yi.auth.KakaoLoginParams;
 import com.yi.auth.NaverLoginParams;
-import com.yi.service.OAuthLoginService;
+import com.yi.service.OauthLoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
 public class AuthController {
-    private final OAuthLoginService oAuthLoginService;
+    private final OauthLoginService oAuthLoginService;
 
     @GetMapping("/kakao")
     public ResponseEntity<AuthTokens> loginKakao(@RequestBody KakaoLoginParams params) {
