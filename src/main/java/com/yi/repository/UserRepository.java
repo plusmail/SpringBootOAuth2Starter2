@@ -1,6 +1,6 @@
 package com.yi.repository;
 
-import com.yi.entity.OauthProvider;
+import com.yi.oauth.OAuthProvider;
 import com.yi.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -14,7 +14,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     Optional<User> findByEmail(String email);
 
-    Optional<User> findByEmailAndOauthProvider(String email, OauthProvider oauthProvider);
+    Optional<User> findByEmailAndOauthProvider(String email, OAuthProvider oauthProvider);
 
 
 }

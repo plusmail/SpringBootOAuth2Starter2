@@ -1,0 +1,2 @@
+https://kauth.kakao.com/oauth/authorize?client_id=13d28f382150f4ade66325136c920199&redirect_uri=http://localhost:8086/login/oauth2/code/kakao&response_type=code
+

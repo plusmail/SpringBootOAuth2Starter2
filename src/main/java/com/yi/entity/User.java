@@ -1,5 +1,6 @@
 package com.yi.entity;
 
+import com.yi.oauth.OAuthProvider;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -34,16 +35,16 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "o_auth_provider")
-    private OauthProvider oauthProvider;
+    private OAuthProvider oauthProvider;
 
     @Builder
-    public User(String username, String email, OauthProvider oauthProvider) {
+    public User(String username, String email, OAuthProvider oauthProvider) {
         this.username = username;
         this.email = email;
         this.oauthProvider = oauthProvider;
     }
     @Builder
-    public User(String email, OauthProvider oauthProvider) {
+    public User(String email, OAuthProvider oauthProvider) {
         this.email = email;
         this.oauthProvider = oauthProvider;
     }
