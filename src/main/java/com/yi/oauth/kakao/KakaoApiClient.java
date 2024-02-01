@@ -23,14 +23,20 @@ public class KakaoApiClient implements OAuthApiClient {
 
     private static final String GRANT_TYPE = "authorization_code";
 
-    @Value("${oauth.kakao.url.auth}")
+    @Value("${spring.security.oauth2.client.provider.kakao.token-uri}")
     private String authUrl;
 
-    @Value("${oauth.kakao.url.api}")
+    @Value("${spring.security.oauth2.client.provider.kakao.user-info-uri}")
     private String apiUrl;
 
-    @Value("${oauth.kakao.client-id}")
+    @Value("${spring.security.oauth2.client.registration.kakao.client-id}")
     private String clientId;
+
+    @Value("${spring.security.oauth2.client.registration.kakao.client-secret}")
+    private String clientSecret;
+
+    @Value("${spring.security.oauth2.client.registration.kakao.redirect-uri}")
+    private String redirectUri;
 
     private final RestTemplate restTemplate;
 
@@ -41,9 +47,6 @@ public class KakaoApiClient implements OAuthApiClient {
 
     @Override
     public String requestAccessToken(OAuthLoginParams params) {
-        String url = authUrl + "/oauth/token";
-
-        System.out.println("requestAccessToken-->"+ url);
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -51,15 +54,15 @@ public class KakaoApiClient implements OAuthApiClient {
         MultiValueMap<String, String> body = params.makeBody();
         body.add("grant_type", GRANT_TYPE);
         body.add("client_id", clientId);
-        body.add("redirect_uri", "http://localhost:8086/kakao/callback");
-        body.add("client_secret", "531yR8iBJc2lD6mGm9CgL8i2e6bFkdis");
+        body.add("redirect_uri", redirectUri);
+        body.add("client_secret", clientSecret);
 
         System.out.println("---->"+ body.toString());
         HttpEntity<?> request = new HttpEntity<>(body, httpHeaders);
 
         System.out.println("HttpEntity---->"+ request.toString());
 
-        KakaoTokens response = restTemplate.postForObject(url, request, KakaoTokens.class);
+        KakaoTokens response = restTemplate.postForObject(authUrl, request, KakaoTokens.class);
         Objects.requireNonNull(response);
 //        assert response != null;
         return response.getAccessToken();
@@ -67,8 +70,6 @@ public class KakaoApiClient implements OAuthApiClient {
 
     @Override
     public OAuthInfoResponse requestOauthInfo(String accessToken) {
-        String url = apiUrl + "/v2/user/me";
-
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         httpHeaders.set("Authorization", "Bearer " + accessToken);
@@ -78,6 +79,6 @@ public class KakaoApiClient implements OAuthApiClient {
 
         HttpEntity<?> request = new HttpEntity<>(body, httpHeaders);
 
-        return restTemplate.postForObject(url, request, KakaoInfoResponse.class);
+        return restTemplate.postForObject(apiUrl, request, KakaoInfoResponse.class);
     }
 }

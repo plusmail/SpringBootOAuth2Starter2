@@ -4,10 +4,13 @@ import com.yi.oauth.OAuthLoginParams;
 import com.yi.oauth.OAuthProvider;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 @Getter
+@Setter
 @NoArgsConstructor
 public class KakaoLoginParams implements OAuthLoginParams {
     private String authorizationCode;
